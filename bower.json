@@ -1,0 +1,18 @@
+{
+  "name": "angular-dom",
+  "version": "0.1.0",
+  "authors": [
+    "Albert Martin <albert@bethel.io>"
+  ],
+  "description": "Re-usable DOM helpers for Angular with no jQuery dependencies.",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test"
+  ],
+  "dependencies": {
+    "angular": "1.4"
+  }
+}
