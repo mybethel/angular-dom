@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+	<title>Angular DOM Demo</title>
+	<style>
+		body {
+			margin: 50px;
+			margin-bottom: 120%;
+		}
+		.column, div[sticky] {
+			background: #EEE;
+			text-align: center;
+			border-radius: 4px;
+			font-size: 1rem;
+		}
+	</style>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+</head>
+
+<body ng-app="dom">
+
+	<h3 style="text-align: center;">Angular DOM Examples</h3>
+
+	<div class="container">
+		<div class="row">
+	    <div class="one-half column" style="min-height: 500px; border: 1px solid #bbb; background: white;  margin-bottom: 1.5rem;">
+
+				<div sticky style="line-height: 30px; font-weight: 600; text-transform: uppercase;">
+					Sticky element
+				</div>
+
+			</div>
+			<div equalize=".column" media-query="min-width: 550px" class="one-half column" style="background: white;">
+				<div class="row">
+					<div class="one-half column" style="padding: 10px; margin-bottom: 1.5rem;">
+						Equalized elements will match the height of their tallest sibling.
+					</div>
+
+					<div class="one-half column" style="padding: 10px;">
+						You can supply a CSS selector manually, otherwise the immediate children will be considered the elements to be equalized. You can also disable this behaviour on smaller devices by supplying a media query (shrink your window to see this in action!)
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.min.js"></script>
+	<script src="../dist/angularDom.min.js"></script>
+	<script>angular.module('dom', ['bethel.dom']);</script>
+
+</body>
+
+</html>
