@@ -56,12 +56,9 @@ angular.module('bethel.dom')
       scope.$watch('equalized', function(newValue, oldValue) {
         if (!newValue) return;
 
-        // Watch each element for changes in height and content.
-        angular.forEach(scope.equalized, function (el) {
-          scope.$watch(function() {
-            return [el.offsetHeight, el[0].childNodes.length].join('x');
-          }, getMaxHeight);
-        });
+        // Re-calculate height on `$digest()` to ensure that new content that
+        // may have been added as child nodes are properly accounted for.
+        scope.$watch(getMaxHeight);
       });
 
     }
