@@ -55,9 +55,11 @@ angular.module('bethel.dom')
       $window.addEventListener('resize', getMaxHeight);
       scope.$watch('equalized', function(newValue, oldValue) {
         if (!newValue) return;
+
+        // Watch each element for changes in height and content.
         angular.forEach(scope.equalized, function (el) {
           scope.$watch(function() {
-            return el.offsetHeight;
+            return [el.offsetHeight, el[0].childNodes.length].join('x');
           }, getMaxHeight);
         });
       });
