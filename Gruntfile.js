@@ -22,8 +22,8 @@ module.exports = function(grunt) {
             footer: '})(angular);'
          },
          dist: {
-            src: ['src/angularDom.js', 'src/*.js'],
-            dest: 'dist/angularDom.min.js'
+            src: ['src/angular-dom.js', 'src/*.js'],
+            dest: 'dist/angular-dom.min.js'
          }
       },
 
@@ -35,7 +35,7 @@ module.exports = function(grunt) {
          dist: {
             files: [{
                expand: true,
-               src: 'dist/angularDom.min.js'
+               src: 'dist/angular-dom.min.js'
             }]
          }
       },

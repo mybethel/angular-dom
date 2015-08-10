@@ -4,12 +4,17 @@
  * License: MIT
  */
 angular.module('bethel.dom')
-.directive('equalize', function() {
+.directive('equalize', ['$window', function($window) {
   return {
     restrict: 'A',
     link: function (scope, element, attrs) {
 
       var maxHeight = 0;
+      var mediaQuery = attrs.mediaQuery || false;
+
+      if (mediaQuery && mediaQuery[0] !== '(') {
+        mediaQuery = '(' + mediaQuery + ')';
+      }
 
       function findElements() {
         if (!attrs.equalize)
@@ -32,7 +37,11 @@ angular.module('bethel.dom')
           angular.element(el).css('height', '');
           maxHeight = Math.max(maxHeight, el.offsetHeight);
         });
-        applyMaxHeight();
+
+        // Only apply maximum height if the media query matches.
+        if (!mediaQuery || matchMedia(mediaQuery).matches) {
+          applyMaxHeight();
+        }
       }
 
       scope.equalized = findElements();
@@ -43,7 +52,7 @@ angular.module('bethel.dom')
         scope.equalized = findElements();
       });
 
-      window.addEventListener('resize', getMaxHeight);
+      $window.addEventListener('resize', getMaxHeight);
       scope.$watch('equalized', function(newValue, oldValue) {
         if (!newValue) return;
         angular.forEach(scope.equalized, function (el) {
@@ -55,4 +64,4 @@ angular.module('bethel.dom')
 
     }
   };
-});
+}]);

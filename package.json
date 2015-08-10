@@ -1,6 +1,6 @@
 {
   "name": "angular-dom",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Re-usable DOM helpers for Angular with no jQuery dependencies.",
   "dependencies": {
     "grunt": "^0.4.5",
