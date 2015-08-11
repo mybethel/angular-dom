@@ -30,14 +30,21 @@
 				</div>
 
 			</div>
-			<div equalize=".column" media-query="min-width: 550px" class="one-half column" style="background: white;">
-				<div class="row">
+			<div class="one-half column" style="background: white;">
+				<div class="row" style="margin-bottom: 1.5rem;" equalize=".column" media-query="min-width: 550px">
 					<div class="one-half column" style="padding: 10px; margin-bottom: 1.5rem;">
 						Equalized elements will match the height of their tallest sibling.
 					</div>
 
 					<div class="one-half column" style="padding: 10px;">
 						You can supply a CSS selector manually, otherwise the immediate children will be considered the elements to be equalized. You can also disable this behaviour on smaller devices by supplying a media query (shrink your window to see this in action!)
+					</div>
+				</div>
+
+				<div class="row">
+					<div equalize="viewport" class="column" style="padding: 10px;">
+						<p sticky offset="10">Elements can be equalized with the viewport.<br />
+						This is best used for fixed elements on mobile devices.</p>
 					</div>
 				</div>
 			</div>

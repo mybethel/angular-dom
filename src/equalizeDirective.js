@@ -7,6 +7,7 @@ angular.module('bethel.dom')
 .directive('equalize', ['$window', function($window) {
   return {
     restrict: 'A',
+    scope: true,
     link: function (scope, element, attrs) {
 
       var maxHeight = 0;
@@ -20,6 +21,11 @@ angular.module('bethel.dom')
         if (!attrs.equalize)
           return element[0].children;
 
+        // Allow the user to equalize the content to the viewport height.
+        if (attrs.equalize === 'viewport') {
+          return element;
+        }
+
         return element[0].querySelectorAll(attrs.equalize);
       }
 
@@ -32,11 +38,17 @@ angular.module('bethel.dom')
 
       function getMaxHeight() {
         if (!scope.equalized) return;
-        maxHeight = 0;
-        angular.forEach(scope.equalized, function (el) {
-          angular.element(el).css('height', '');
-          maxHeight = Math.max(maxHeight, el.offsetHeight);
-        });
+
+        if (attrs.equalize === 'viewport') {
+          maxHeight = $window.innerHeight;
+        }
+        else {
+          maxHeight = 0;
+          angular.forEach(scope.equalized, function (el) {
+            angular.element(el).css('height', '');
+            maxHeight = Math.max(maxHeight, el.offsetHeight);
+          });
+        }
 
         // Only apply maximum height if the media query matches.
         if (!mediaQuery || matchMedia(mediaQuery).matches) {

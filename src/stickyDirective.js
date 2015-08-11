@@ -16,19 +16,30 @@ angular.module('bethel.dom')
       $window.addEventListener('scroll', stickyElement);
       $window.addEventListener('resize', stickyElement);
 
+      function calculateForStyles(parent, width) {
+        var styles = [
+          'border-left-width',
+          'border-right-width',
+          'padding-left',
+          'padding-right'
+        ];
+
+        angular.forEach(styles, function(style) {
+          if (parseFloat(parent.css(style)) >= 1) {
+            width -= parseFloat(parent.css(style));
+          }
+        });
+
+        return width;
+      }
+
       function stickyElement() {
         var parentRect = parent[0].getBoundingClientRect(),
             distanceFromTop = parentRect.top,
             distanceFromBottom = parentRect.bottom - (element[0].offsetHeight + offset),
             parentWidth = parent[0].offsetWidth;
 
-        if (parseFloat(parent.css('border-left-width')) >= 1) {
-          parentWidth -= parseFloat(parent.css('border-left-width'));
-        }
-
-        if (parseFloat(parent.css('border-right-width')) >= 1) {
-          parentWidth -= parseFloat(parent.css('border-right-width'));
-        }
+        parentWidth = calculateForStyles(parent, parentWidth);
 
         element.css({
           position: 'fixed',
