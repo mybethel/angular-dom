@@ -7,7 +7,7 @@ angular.module('bethel.dom')
 .directive('equalize', ['$window', function($window) {
   return {
     restrict: 'A',
-    scope: true,
+    scope: {},
     link: function (scope, element, attrs) {
 
       var maxHeight = 0;
