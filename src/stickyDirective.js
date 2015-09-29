@@ -15,6 +15,7 @@ angular.module('bethel.dom')
 
       $window.addEventListener('scroll', stickyElement);
       $window.addEventListener('resize', stickyElement);
+      scope.$watch(stickyElement);
 
       function calculateForStyles(parent, width) {
         var styles = [

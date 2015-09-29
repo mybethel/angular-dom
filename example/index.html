@@ -4,7 +4,6 @@
 	<title>Angular DOM Demo</title>
 	<style>
 		body {
-			margin: 50px;
 			margin-bottom: 120%;
 		}
 		.column, div[sticky] {
@@ -14,7 +13,8 @@
 			font-size: 1rem;
 		}
 	</style>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" />
+	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1" />
 </head>
 
 <body ng-app="dom">
@@ -42,9 +42,13 @@
 				</div>
 
 				<div class="row">
-					<div equalize="viewport" class="column" style="padding: 10px;">
-						<p sticky offset="10">Elements can be equalized with the viewport.<br />
-						This is best used for fixed elements on mobile devices.</p>
+					<div equalize="viewport" class="column" style="padding: 10px; border-bottom: 5px solid red;">
+						<p>
+							Elements can be equalized with the viewport.<br />
+							This is best used for fixed elements on mobile devices.<br />
+							<input type="text" />
+						</p>
+
 					</div>
 				</div>
 			</div>

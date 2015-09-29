@@ -64,7 +64,11 @@ angular.module('bethel.dom')
         scope.equalized = findElements();
       });
 
-      $window.addEventListener('resize', getMaxHeight);
+      var recalculateEvents = ['resize', 'focusin', 'focusout'];
+      angular.forEach(recalculateEvents, function(listenEvent) {
+        $window.addEventListener(listenEvent, getMaxHeight);
+      });
+
       scope.$watch('equalized', function(newValue, oldValue) {
         if (!newValue) return;
 
