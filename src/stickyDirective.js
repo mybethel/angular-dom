@@ -42,22 +42,21 @@ angular.module('bethel.dom')
 
         parentWidth = calculateForStyles(parent, parentWidth);
 
-        element.css({
-          position: 'fixed',
-          top: offset + 'px',
-          width: parentWidth + 'px'
-        });
-
-        if (distanceFromTop > 0) {
-          element.css('position', 'static');
-        }
+        element.css('width', parentWidth + 'px');
 
         if (parseFloat(parent.css('border-bottom-width')) >= 1) {
           distanceFromBottom -= parseFloat(parent.css('border-bottom-width'));
         }
 
-        if (distanceFromBottom < 0) {
+        if (distanceFromTop > 0) {
+          element.css('position', 'static');
+        } else if (distanceFromBottom < 0) {
           element.css('top', Math.round(distanceFromBottom) + 'px');
+        } else {
+          element.css({
+            position: 'fixed',
+            top: offset + 'px',
+          });
         }
       }
     }
