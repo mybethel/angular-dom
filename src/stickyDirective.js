@@ -42,6 +42,16 @@ angular.module('bethel.dom')
 
         parentWidth = calculateForStyles(parent, parentWidth);
 
+        // Fix for parent element being hidden during Angular bootstrap.
+        if (parentWidth < 1) {
+          element.css({
+            position: 'static',
+            top: 0,
+            width: 'auto'
+          });
+          return;
+        }
+
         element.css('width', parentWidth + 'px');
 
         if (parseFloat(parent.css('border-bottom-width')) >= 1) {
