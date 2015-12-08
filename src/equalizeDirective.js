@@ -58,9 +58,9 @@ angular.module('bethel.dom')
 
       scope.equalized = findElements();
       scope.$watch(function() {
-        return element[0].childNodes.length;
-      }, function (newValue, oldValue) {
-        if (!newValue || newValue === oldValue) return;
+        return element[0].innerHTML.length;
+      }, function (newValue) {
+        if (!newValue) return;
         scope.equalized = findElements();
       });
 
